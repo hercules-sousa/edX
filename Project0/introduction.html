@@ -7,6 +7,37 @@
     </head>
 
     <style>
+
+        a.button {
+            -webkit-appearance: button;
+            -moz-appearance: button;
+            appearance: button;
+
+            text-decoration: none;
+            color: initial;
+        }
+
+        @media(min-width: 700px){
+            h1::before{
+                content: "My personal non-yet-very-professional Web Page";
+            }
+        }
+
+        @media(max-width: 699px){
+            h1::before{
+                content: "My personal Web Page";
+            }
+        }
+
+        .row > div {
+            text-align: center;
+            margin: auto;
+            padding: 10px;
+            background-color: teal;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+
         .center {
         display: block;
         margin-left: auto;
@@ -14,12 +45,15 @@
         width: 20%;
         border-radius: 50%;
       }
-    </style>
-    
 
-    <style>
-        body{
+      body{
             background-color: black;
+        }
+
+        h2{
+            border-style: groove;
+            margin: 2%;
+            text-align: center;
         }
 
         h1, h3{
@@ -28,15 +62,43 @@
             text-align: center;
             margin: 20px;
         }
+
+        table{
+            text-align: center;
+            color: white;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
     </style>
+    
 
     <body>
-        <button onclick="music.html">Click Here</button>
-        <h1 style="font-size: 50px;">My personal web page</h1>
+        
+        <form action="https://google.com">
+            <input type="submit" value="Go to Google" />
+        </form>
+
+        <div class="row">
+            <div class="row justify-content-lg-center">
+                <div class="col-lg-3 col-sm-6"><a href="introduction.html" class="button">Intruduction</a></div>
+                <div class="col-lg-3 col-sm-6"><a href="music.html" class="button">Music</a></div>
+                <div class="col-lg-3 col-sm-6">Music</div>
+                <div class="col-lg-3 col-sm-6">Books</div>
+            </div>
+
+        </div>
+
+
+        <h1 style="font-size: 50px;"></h1>
+        
         <img src="photo.jpeg" alt="Personal photo" class="center">
         <h3>
-            Hi there, my name is Hércules de Sousa. I'm a student of computer engineering at
-            Federal Institute of Education, Science and Technology in Paraíba.
+            <p>
+                Hi there, my name is Hércules de Sousa. I'm a student of Computer Engineering at
+                <a style="color: white;" href="https://www.ifpb.edu.br/">Federal Institute of 
+                    Education, Science and Technology in Paraíba</a>. I love watching tv shows, 
+                playing the guitar and reading books.
+            </p>
         </h3>
     </body>
 </html>
