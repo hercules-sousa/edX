@@ -3,94 +3,52 @@
 <html>
     <head>
         <title>My Web Page</title>
+        <meta charset="UTF-8">
+        <! These charsets below are useful for EDGE and Chrome to use the latest rendering engine >
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     </head>
 
     <style>
-
-        a.button {
-            -webkit-appearance: button;
-            -moz-appearance: button;
-            appearance: button;
-
-            text-decoration: none;
-            color: initial;
+        .jumbotron{
+            background-color: #2E2D88;
+            color: white;;
         }
 
-        @media(min-width: 700px){
-            h1::before{
-                content: "My personal non-yet-very-professional Web Page";
-            }
-        }
-
-        @media(max-width: 699px){
-            h1::before{
-                content: "My personal Web Page";
-            }
-        }
-
-        .row > div {
-            text-align: center;
-            padding: 10px;
-            background-color: teal;
-            border: 1px solid black;
-            border-radius: 10px;
-        }
-
-        .center {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 20%;
-        border-radius: 50%;
-      }
-
-      body{
-            background-color: black;
-        }
-
-        h2{
-            border-style: groove;
-            margin: 2%;
-            text-align: center;
-        }
-
-        h1, h3{
-            font-family: 'Times New Roman', Times, serif;
-            color: white;
-            text-align: center;
-            margin: 20px;
-        }
-
-        table{
-            text-align: center;
-            color: white;
-            font-family: 'Times New Roman', Times, serif;
-        }
 
     </style>
-    
 
     <body>
         
-        <div class="row">
-            <div class="col-lg-3 col-sm-6"><a href="introduction.html" class="button"><h5>Intruduction</h5></a></div>
-            <div class="col-lg-3 col-sm-6"><a href="music.html" class="button"><h5>Music</h5></a></div>
-            <div class="col-lg-3 col-sm-6"><a href="shows.html" class="button"><h5>Shows</h5></a></div>
-            <div class="col-lg-3 col-sm-6"><a href="books.html" class="button"><h5>Books</h5></a></div>
+        <div class="container">
+            <div class="page-header">
+                <h1 id="Title">My first non-yet-very-professional web page</h1>
+                <hr>
+                <div class="jumbotron">
+                    <p>
+                        This is my first project made using HTML and CSS in addtion to Bootstrap in order to make the design resposible.
+                        The purpose of this page is to talk about myself in pursuance of people to know me better.
+                    </p>
+                </div>
+                <hr>
+                <div>
+                    <div class="btn-toolbar" role="toolbar" >
+                        <div div class="btn-group mr-2" role="group" aria-label="First group">
+                            <button type="button" class="btn-group-lg" border>Home</button>
+                            <button type="button" class="btn-group-lg">Music</button>
+                            <button type="button" class="btn-group-lg">Tv Shows</button>
+                            <button type="button" class="btn-group-lg">Books</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
 
-
-        <h1 style="font-size: 50px;"></h1>
-        
-        <img src="photo.jpeg" alt="Personal photo" class="center">
-        <h3>
-            <p>
-                Hi there, my name is Hércules de Sousa. I'm a student of Computer Engineering at
-                <a style="color: white;" href="https://www.ifpb.edu.br/">Federal Institute of 
-                    Education, Science and Technology in Paraíba</a>. I love watching tv shows, 
-                playing the guitar and reading books.
-            </p>
-        </h3>
     </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </html>
