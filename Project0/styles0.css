@@ -2,7 +2,7 @@
     background-color: #2E2D88;
 }
 
-#text_white{
+.text_white{
     color: white;
 }
 
@@ -40,6 +40,7 @@
     width: 50%;
 }
 
+
 .card{
     box-shadow: 16px 20px 16px 0 rgba(50, 6, 207, 0.2);
     transition: 0.3s;
@@ -55,10 +56,38 @@ body{
     h1::before{
         content: "My first non-yet-very-professional web page";
     }
+
+    .right{
+        display: block;
+        margin-left: auto;
+        margin-right: 2px;
+        width: 50%;
+    }
+
+    .left{
+        display: block;
+        margin-left: 2px;
+        margin-right: auto;
+        width: 50%;
+    }
 }
 
 @media (max-width: 699px){
     h1::before{
         content: "My first web page";
+    }
+
+    .right{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .left{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
     }
 }
