@@ -2,11 +2,15 @@
     background-color: #2E2D88;
 }
 
+.text_white, .text_black{
+    font-weight: normal;
+}
+
 .text_white{
     color: white;
 }
 
-#text_black{
+.text_black{
     color: black;
 }
 
@@ -52,7 +56,7 @@ body{
     background-color: black;
 }
 
-@media (min-width: 700px){
+@media (min-width: 1001px){
     h1::before{
         content: "My first non-yet-very-professional web page";
     }
@@ -72,8 +76,8 @@ body{
     }
 }
 
-@media (max-width: 699px){
-    h1::before{
+@media (max-width: 999px){
+    h1::after{
         content: "My first web page";
     }
 
@@ -95,7 +99,11 @@ body{
 table {
     table-layout: fixed ;
     width: 100% ;
-  }
-  td {
+}
+td {
     width: 50% ;
-  }
+}
+
+div div div p{
+    color: white;
+}
