@@ -91,3 +91,11 @@ body{
         width: 50%;
     }
 }
+
+table {
+    table-layout: fixed ;
+    width: 100% ;
+  }
+  td {
+    width: 50% ;
+  }

@@ -2,42 +2,128 @@
 
 <html>
     <head>
-        <title></title>
+        <title>My Web Page</title>
+        <meta charset="UTF-8">
+        <! These charsets below are useful for EDGE and Chrome to use the latest rendering engine >
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <meta name="viewport" content="width = device-width, initial-scale = 1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="styles0.css">
     </head>
     <body>
 
         <div class="container">
 
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="d-block w-100" src="photo.jpeg" alt="Primeiro Slide">
-                    </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="iceAndFire.jpg" alt="Segundo Slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block w-100" src="percy.jpg" alt="Terceiro Slide">
-                </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Anterior</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Próximo</span>
-                </a>
+            <br>
+    
+            <div class="page-header">
+                <h1 id="Title"></h1>
+                <hr style="color: white;">
             </div>
 
-        </div>
+            <ul class="nav nav-pills nav-justified nav-fill">
+                <li class="col-lg-3 col-md-3 col-sm-6 col-xm-6 nav-item">
+                    <a class="nav-link fa fa-home" href="introduction.html"> Home</a>
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-6 col-xm-6 nav-item">
+                    <a class="nav-link fa fa-music disabled" href="music.html"> Music</a>
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-6 col-xm-6 nav-item">
+                    <a class="nav-link fa fa-tv" href="shows.html"> Tv Shows</a>
+                </li>
+                <li class="col-lg-3 col-md-3 col-sm-6 col-xm-6 nav-item">
+                    <a class="nav-link fa fa-book" href="books.html"> Books</a>
+                </li>
+            </ul>
 
-        
+            <br>
+            <br>
+
+            <table class="table table-bordered table-stripped table-hover">
+                
+                <tbody>
+                    <tr>
+                        <th class="text_white text-center"><h4>Song</h4></th>
+                        <th class="text_white text-center"><h4>Author</h4></th>
+                    </tr>
+
+                    <tr>
+                        <td class="text_white text-center">
+                            <a href="https://www.youtube.com/watch?v=4sI6EL_e63c">
+                                <img src="imgs/musicIcon.jpg" alt="Test" style="width:35px;height:35px;border:0;">
+                            </a>
+                            Simple man
+                        </td>
+                        <td style="text-align: center;" class="text_white text-center">Lynyrd Skynyrd</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_white text-center">
+                            <a href="https://www.youtube.com/watch?v=oMOoV6RuJps">
+                                <img src="imgs/musicIcon.jpg" alt="Test" style="width:35px;height:35px;border:0;">
+                            </a>
+                            Bohemian Rhapsody
+                        </td>
+                        <td style="text-align: center;" class="text_white text-center">Queen</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_white text-center">
+                            <a href="https://www.youtube.com/watch?v=KSLUBIXH0L0">
+                                <img src="imgs/musicIcon.jpg" alt="Test" style="width:35px;height:35px;border:0;">
+                            </a>
+                            Wind of Change
+                        </td>
+                        <td style="text-align: center;" class="text_white text-center">Scorpions</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_white text-center">
+                            <a href="https://www.youtube.com/watch?v=F19PnbWigSA&list=RDVlxJqiSDf6U&index=3">
+                                <img src="imgs/musicIcon.jpg" alt="Test" style="width:35px;height:35px;border:0;">
+                            </a>
+                            Súplica cearense
+                        </td>
+                        <td style="text-align: center;" class="text_white text-center">O Rappa</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_white text-center">
+                            <a href="https://www.youtube.com/watch?v=jp288zfsNTI&list=RDVlxJqiSDf6U&index=8">
+                                <img src="imgs/musicIcon.jpg" alt="Test" style="width:35px;height:35px;border:0;">
+                            </a>
+                            Meu novo mundo
+                        </td>
+                        <td style="text-align: center;" class="text_white text-center">Charlie Brown jr</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_white text-center">
+                            <a href="https://www.youtube.com/watch?v=k6-LCjvGSzY">
+                                <img src="imgs/musicIcon.jpg" alt="Test" style="width:35px;height:35px;border:0;">
+                            </a>
+                            Morena
+                        </td>
+                        <td style="text-align: center;" class="text_white text-center">Vitor Kley</td>
+                    </tr>
+
+                    <tr>
+                        <td class="text_white text-center">
+                            <a href="https://www.youtube.com/watch?v=32GZ3suxRn4">
+                                <img src="imgs/musicIcon.jpg" alt="Test" style="width:35px;height:35px;border:0;">
+                            </a>
+                            Slow dancing in a burning room
+                        </td>
+                        <td style="text-align: center;" class="text_white text-center">John Mayer</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br>
+
+        </div>
 
     </body>
 
