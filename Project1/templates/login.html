@@ -1,0 +1,17 @@
+{% extends "layout_login.html" %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+  {% block content %}
+  {% if message %}
+    <br>
+    <div class="alert alert-danger">
+      <strong>Your username or password is/are incorrrect(s)</strong>
+    </div>
+  {% else %}
+
+  {% endif %}
+  {% endblock content %}
+{% endblock %}
