@@ -23,7 +23,7 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
-    return render_template("login.html")
+    return render_template("login.html", message = False, text = "Login page")
 
 
 @app.route("/trying_logging", methods=["POST"])
@@ -33,6 +33,11 @@ def trying_logging():
     account_db = db.execute("SELECT * FROM accounts WHERE username=:username AND password=:password", {"username": user_page, "password": password_page}).fetchone()
 
     if account_db is None:
-        return render_template("login.html", message=True)
+        return render_template("login.html", message = True, text = "Login page")
 
     return render_template("hello.html", message="success")
+
+
+@app.route("/signing_up", methods=["GET"])
+def signing_up():
+    return render_template("signing_up.html", text = "Signing up page")

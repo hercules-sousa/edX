@@ -1,17 +1,29 @@
 {% extends "layout_login.html" %}
 
-{% block header %}
+{% block header_login %}
+  <div class="container">
+    <br>
+
+    <div class="page-header">
+      <h1 id="Title">{{ text }}</h1>
+      <hr style="color: black;">
+    </div>
+  </div>
 {% endblock %}
 
-{% block body %}
-  {% block content %}
-  {% if message %}
-    <br>
-    <div class="alert alert-danger">
-      <strong>Your username or password is/are incorrrect(s)</strong>
-    </div>
-  {% else %}
+{% block nav %}
+  <br>
+  <form action="{{ url_for('signing_up') }}" method="get" target="_blank">
+    <button class="btn btn-primary" type="submit">Sign up</button>
+  </form>
+{% endblock %}
 
+{% block warning %}
+  {% if message %}
+      <br>
+      <div class="alert alert-danger">
+        <strong>Your username or password is/are incorrrect(s)</strong>
+      </div>
+  {% else %}
   {% endif %}
-  {% endblock content %}
 {% endblock %}

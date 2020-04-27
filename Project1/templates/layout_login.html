@@ -14,17 +14,8 @@
 
     <div class="container">
 
-      {% block header %}
+      {% block header_login %}
       {% endblock %}
-
-      <div class="container">
-        <br>
-
-        <div class="page-header">
-          <h1 id="Title">Login page</h1>
-          <hr style="color: black;">
-        </div>
-      </div>
 
       <form action="{{ url_for('trying_logging') }}" method="post">
           <div class="form-group">
@@ -38,10 +29,12 @@
           <button class="btn btn-primary" type="submit" name="btn_submit">Submit</button>
       </form>
 
-
-
-      {% block body %}
+      {% block nav %}
       {% endblock %}
+
+      {% block warning %}
+      {% endblock %}
+
     </div>
 
   </body>
