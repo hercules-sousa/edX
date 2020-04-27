@@ -23,19 +23,16 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("login.html", message="")
 
 
-@app.route("/logged", methods=["POST"])
-def logged():
+@app.route("/trying_logging", methods=["POST"])
+def trying_logging():
     user_page = request.form.get("user")
     password_page = request.form.get("password")
     account_db = db.execute("SELECT * FROM accounts WHERE username=:username AND password=:password", {"username": user_page, "password": password_page}).fetchone()
 
     if account_db is None:
-        return render_template("loggin_fail.html")
+        return render_template("login.html", message="Login fail")
 
-    if account_db.username == user_page and account_db.password == password_page:
-        return render_template("hello.html", message="success")
-    else:
-        return render_template("loggin_fail.html")
+    return render_template("hello.html", message="success")
