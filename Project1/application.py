@@ -23,21 +23,39 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
-    return render_template("login.html", message = False, text = "Login page")
+    return render_template("login.html", message=False, text="Login page")
 
 
 @app.route("/trying_logging", methods=["POST"])
 def trying_logging():
     user_page = request.form.get("user")
     password_page = request.form.get("password")
-    account_db = db.execute("SELECT * FROM accounts WHERE username=:username AND password=:password", {"username": user_page, "password": password_page}).fetchone()
+    account_db = db.execute("SELECT * FROM accounts WHERE username=:username AND password=:password",
+                            {"username": user_page, "password": password_page}).fetchone()
 
     if account_db is None:
-        return render_template("login.html", message = True, text = "Login page")
+        return render_template("login.html", message=True, text="Login page")
 
     return render_template("hello.html", message="success")
 
 
 @app.route("/signing_up", methods=["GET"])
 def signing_up():
-    return render_template("signing_up.html", text = "Signing up page")
+    return render_template("signing_up.html", text="Signing up page")
+
+
+@app.route("/signing_up_into_db", methods=["POST"])
+def signing_up_into_db():
+    user_page = request.form.get("user")
+    password_page = request.form.get("password")
+
+    if user_page == "" or password_page == "":
+        return render_template("signing_up.html", login_fail=True)
+
+    account_db = db.execute("SELECT * FROM accounts WHERE username=:username",
+                            {"username": user_page}).fetchone()
+    if account_db is None:
+        db.execute("INSERT INTO accounts (username, password) VALUES (:user, :pass);", {"user": user_page, "pass": password_page})
+        db.commit()
+        return render_template("signing_up.html", login_success=True)
+    return render_template("signing_up.html", login_fail=True)
