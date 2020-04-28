@@ -36,7 +36,8 @@ def trying_logging():
     if account_db is None:
         return render_template("login.html", message=True, text="Login page")
 
-    return render_template("hello.html", message="success")
+    session["username"] = user_page
+    return render_template("hello.html", user=session["username"])
 
 
 @app.route("/signing_up", methods=["GET"])
