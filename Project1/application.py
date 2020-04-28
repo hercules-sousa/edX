@@ -37,7 +37,7 @@ def trying_logging():
         return render_template("login.html", message=True, text="Login page")
 
     session["username"] = user_page
-    return render_template("hello.html", user=session["username"])
+    return render_template("search.html", user=session["username"])
 
 
 @app.route("/signing_up", methods=["GET"])
@@ -60,3 +60,16 @@ def signing_up_into_db():
         db.commit()
         return render_template("signing_up.html", login_success=True)
     return render_template("signing_up.html", login_fail=True)
+
+
+@app.route("/searching", methods=["POST"])
+def searching():
+    s = request.form.get("searched")
+    results = db.execute(f"SELECT * FROM books WHERE isbn LIKE '%{s}%';").fetchall()
+    if not results:
+        results = db.execute(f"SELECT * FROM books WHERE title LIKE '%{s}%';").fetchall()
+        if not results:
+            results = db.execute(f"SELECT * FROM books WHERE author LIKE '%{s}%';").fetchall()
+            if not results:
+                results = db.execute(f"SELECT * FROM books WHERE year LIKE '%{s}%';").fetchall()
+    return render_template("results.html", searched=results)
