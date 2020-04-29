@@ -65,11 +65,12 @@ def signing_up_into_db():
 @app.route("/searching", methods=["POST"])
 def searching():
     s = request.form.get("searched")
-    results = db.execute(f"SELECT * FROM books WHERE isbn LIKE '%{s}%';").fetchall()
-    if not results:
-        results = db.execute(f"SELECT * FROM books WHERE title LIKE '%{s}%';").fetchall()
-        if not results:
-            results = db.execute(f"SELECT * FROM books WHERE author LIKE '%{s}%';").fetchall()
-            if not results:
-                results = db.execute(f"SELECT * FROM books WHERE year LIKE '%{s}%';").fetchall()
+    a = db.execute(f"SELECT * FROM books WHERE isbn LIKE '%{s}%';").fetchall()
+    b = db.execute(f"SELECT * FROM books WHERE title LIKE '%{s}%';").fetchall()
+    c = db.execute(f"SELECT * FROM books WHERE author LIKE '%{s}%';").fetchall()
+    if s.isdigit():
+        d = db.execute(f"SELECT * FROM books WHERE CAST(year AS VARCHAR) LIKE '%{s}%'").fetchall()
+        results = a + b + c + d
+    else:
+        results = a + b + c
     return render_template("results.html", searched=results)

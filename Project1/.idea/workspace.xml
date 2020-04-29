@@ -20,15 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d56ccc3-a934-44a8-9a02-165f2ee9deaa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/results.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Login - Adminer.desktop" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/flask_session/b6b774dbcc999911b6fb7bd16a3c72bf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/application.py" beforeDir="false" afterPath="$PROJECT_DIR$/application.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_session/2029240f6d1128be89ddc32729463129" beforeDir="false" afterPath="$PROJECT_DIR$/flask_session/2029240f6d1128be89ddc32729463129" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flask_session/d8cd70b6bce1f16b8b5aa19d8a16e7c9" beforeDir="false" afterPath="$PROJECT_DIR$/flask_session/d8cd70b6bce1f16b8b5aa19d8a16e7c9" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/hello.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/layout_standard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/layout_standard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
