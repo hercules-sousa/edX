@@ -56,21 +56,34 @@ def signing_up_into_db():
     account_db = db.execute("SELECT * FROM accounts WHERE username=:username",
                             {"username": user_page}).fetchone()
     if account_db is None:
-        db.execute("INSERT INTO accounts (username, password) VALUES (:user, :pass);", {"user": user_page, "pass": password_page})
+        db.execute("INSERT INTO accounts (username, password) VALUES (:user, :pass);",
+                   {"user": user_page, "pass": password_page})
         db.commit()
         return render_template("signing_up.html", login_success=True)
     return render_template("signing_up.html", login_fail=True)
 
 
-@app.route("/searching", methods=["POST"])
-def searching():
-    s = request.form.get("searched")
+def looking_into_db(s):
     a = db.execute(f"SELECT * FROM books WHERE isbn LIKE '%{s}%';").fetchall()
     b = db.execute(f"SELECT * FROM books WHERE title LIKE '%{s}%';").fetchall()
     c = db.execute(f"SELECT * FROM books WHERE author LIKE '%{s}%';").fetchall()
     if s.isdigit():
         d = db.execute(f"SELECT * FROM books WHERE CAST(year AS VARCHAR) LIKE '%{s}%'").fetchall()
-        results = a + b + c + d
+        return a + b + c + d
     else:
-        results = a + b + c
-    return render_template("results.html", searched=results)
+        return a + b + c
+
+
+def looking_into_db_by_id(id):
+    return db.execute(f"SELECT * FROM books WHERE id={id};").fetchall()
+
+
+@app.route("/searching", methods=["POST"])
+def searching():
+    s = request.form.get("searched")
+    return render_template("results.html", searched=looking_into_db(s), part_searched=s)
+
+
+@app.route("/book_search/<int:id>", methods=["GET"])
+def book_search(id):
+    return render_template("books.html", id=looking_into_db_by_id(id))
