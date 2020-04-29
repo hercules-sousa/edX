@@ -1,7 +1,7 @@
 import os
 
 import requests
-from flask import Flask, session, render_template, request
+from flask import Flask, session, render_template, request, jsonify
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -82,7 +82,10 @@ def looking_into_db_by_id(id):
 @app.route("/searching", methods=["POST"])
 def searching():
     s = request.form.get("searched")
-    return render_template("results.html", searched=looking_into_db(s), part_searched=s)
+    book = looking_into_db(s)
+    if not book:
+        return "No such book", 404
+    return render_template("results.html", searched=book, part_searched=s)
 
 
 @app.route("/book_search/<int:id>", methods=["GET"])
@@ -91,4 +94,6 @@ def book_search(id):
     isbn = book[0][0]
     print(f"ISBN = {isbn}")
     res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"KEY": "KEj26vrr38gcJPa6sF4vouwY", "isbns": isbn})
-    return render_template("books.html", data_in_db = book, request=res.json())
+    if res.status_code != 200:
+        raise Exception("Error: No such book")
+    return render_template("books.html", data_in_db=book, request=res.json())

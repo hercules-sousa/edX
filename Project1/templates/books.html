@@ -1,11 +1,39 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    {{ data_in_db }}
-    {{ request }}
-  </body>
-</html>
+{% extends "layout_standard.html" %}
+
+{% block title %}
+  <title>{{ data_in_db[0][1] }}</title>
+{% endblock %}
+
+{% block body %}
+  Author: {{ data_in_db[0][2] }}
+  <br>
+  Publication year: {{ data_in_db[0][3] }}
+  <br>
+  ISBN: {{ data_in_db[0][0] }}
+  <br>
+  Reviews count: {{ request["books"][0]["reviews_count"] }}
+  <br>
+  Ratings count: {{ request["books"][0]["ratings_count"] }}
+  <br>
+  Text reviews count: {{ request["books"][0]["text_reviews_count"] }}
+  <br>
+  Work ratings count: {{ request["books"][0]["work_ratings_count"] }}
+  <br>
+  Work text reviews count: {{ request["books"][0]["work_text_reviews_count"] }}
+  <br>
+  Average rating: {{ request["books"][0]["average_rating"] }}
+  <br>
+
+  {{ request }}
+{% endblock %}
+
+{% block page_header %}
+  <div class="container">
+    <br>
+
+    <div class="page-header">
+      <h1 id="Title">Book: {{ data_in_db[0][1] }}</h1>
+      <hr style="color: black;">
+    </div>
+  </div>
+{% endblock %}
