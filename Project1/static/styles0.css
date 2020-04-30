@@ -2,7 +2,6 @@ form, h1 {
   text-align: center;
 }
 
-#btn_register {
-  text-align: center;
-  vertical-align: top;
+h1, label {
+  color: white;
 }
