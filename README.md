@@ -27,3 +27,10 @@ Now it’s time to make your website your own. Design a personal webpage about y
   <li>In README.md, include a short writeup describing your project, what’s contained in each file, and (optionally) any other additional information the staff should know about your project.</li>
 </ul>
 Note that not all of the above requirements are covered in Lecture 0, some will be introduced in Lecture 1.
+
+### :large_blue_diamond: Project1:
+#### :arrow_right: Objectives:
+<ul>
+  <li>Become more comfortable with HTML and CSS to design and style webpages.</li>
+  <li>Learn to use SCSS to write more complex stylesheets for your webpages.</li>
+</ul>
