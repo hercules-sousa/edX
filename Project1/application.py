@@ -38,6 +38,7 @@ def trying_logging():
         return render_template("login.html", message=True, text="Login page")
 
     session["username"] = user_page
+    session["review"] = True
     return render_template("search.html", user=session["username"])
 
 
@@ -97,3 +98,26 @@ def book_search(id):
     if res.status_code != 200:
         raise Exception("Error: No such book")
     return render_template("books.html", data_in_db=book, request=res.json())
+
+
+@app.route("/sending_review", methods=["POST"])
+def sending_review():
+    review_rating = request.form.get("review_rating")
+    if not review_rating.isdigit():
+        print(f"Review sent = {review_rating}")
+        return render_template("error.html")
+    review_rating = int(review_rating)
+    if not 1 <= review_rating <= 5:
+        print(f"Review sent = {review_rating}")
+        return render_template("error.html", message="Invalid number")
+    review_comment = request.form["review_comment"]
+    print(f"{review_comment}")
+    user = session["username"]
+    user_in_db = db.execute("SELECT * FROM reviews WHERE username=:user;", {"user": user}).fetchone()
+    if user_in_db is None:
+        db.execute("INSERT INTO reviews(username, commentary) VALUES (:username, :review_comment);", {"username": user, "review_comment": review_comment})
+        db.commit()
+        return render_template("error.html", message="Tudo certo")
+    else:
+        return render_template("error.html", message="Usuário já comentou")
+

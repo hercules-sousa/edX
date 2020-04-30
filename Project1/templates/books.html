@@ -4,28 +4,6 @@
   <title>{{ data_in_db[0][1] }}</title>
 {% endblock %}
 
-{% block body %}
-  Author: {{ data_in_db[0][2] }}
-  <br>
-  Publication year: {{ data_in_db[0][3] }}
-  <br>
-  ISBN: {{ data_in_db[0][0] }}
-  <br>
-  Reviews count: {{ request["books"][0]["reviews_count"] }}
-  <br>
-  Ratings count: {{ request["books"][0]["ratings_count"] }}
-  <br>
-  Text reviews count: {{ request["books"][0]["text_reviews_count"] }}
-  <br>
-  Work ratings count: {{ request["books"][0]["work_ratings_count"] }}
-  <br>
-  Work text reviews count: {{ request["books"][0]["work_text_reviews_count"] }}
-  <br>
-  Average rating: {{ request["books"][0]["average_rating"] }}
-  <br>
-
-  {{ request }}
-{% endblock %}
 
 {% block page_header %}
   <div class="container">
@@ -36,4 +14,53 @@
       <hr style="color: black;">
     </div>
   </div>
+{% endblock %}
+
+{% block body %}
+  Author: {{ data_in_db[0][2] }}
+  <br>
+  Publication year: {{ data_in_db[0][3] }}
+  <br>
+  ISBN: {{ data_in_db[0][0] }}
+  <br>
+  Ratings count: {{ request["books"][0]["ratings_count"] }}
+  <br>
+  Reviews count: {{ request["books"][0]["reviews_count"] }}
+  <br>
+  Text reviews count: {{ request["books"][0]["text_reviews_count"] }}
+  <br>
+  Work ratings count: {{ request["books"][0]["work_ratings_count"] }}
+  <br>
+  Work reviews count: {{ request["books"][0]["work_reviews_count"] }}
+  <br>
+  Work text reviews count: {{ request["books"][0]["work_text_reviews_count"] }}
+  <br>
+  Average rating: {{ request["books"][0]["average_rating"] }}
+  <br>
+  <br>
+  <br>
+{% endblock %}
+
+{% block form %}
+  <form class="col-lg-12" action="{{ url_for('sending_review') }}" method="post">
+      <div class="form-group">
+        <label for="review">Rating(1 to 5):</label>
+        <input type="text" class="form-control" name="review_rating" placeholder="Enter here your rating:">
+      </div>
+      <div>
+        <label for="review">Comment:</label>
+        <textarea rows="4" cols="50" name="review_comment"></textarea>
+      </div>
+      <br>
+      <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+{% endblock %}
+
+{% block number_valid %}
+  {% if no_number %}
+    <br>
+    <div class="alert alert-danger">
+      <strong>No valid number</strong>
+    </div>
+  {% endif %}
 {% endblock %}
