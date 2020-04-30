@@ -30,7 +30,12 @@ Note that not all of the above requirements are covered in Lecture 0, some will 
 
 ### :large_blue_diamond: Project1:
 #### :arrow_right: Objectives:
-<ul>
-  <li>Become more comfortable with HTML and CSS to design and style webpages.</li>
-  <li>Learn to use SCSS to write more complex stylesheets for your webpages.</li>
-</ul>
+
+* Become more comfortable with Python.
+* Gain experience with Flask.
+* Learn to use SQL to interact with databases.
+
+### :black_circle: Overview:
+In this project, you’ll build a book review website. Users will be able to register for your website and then log in using their username and password. Once they log in, they will be able to search for books, leave reviews for individual books, and see the reviews made by other people. You’ll also use the a third-party API by Goodreads, another book review website, to pull in ratings from a broader audience. Finally, users will be able to query for book details and book reviews programmatically via your website’s API.
+
+
