@@ -38,4 +38,6 @@ Note that not all of the above requirements are covered in Lecture 0, some will 
 ### :black_circle: Overview:
 In this project, you’ll build a book review website. Users will be able to register for your website and then log in using their username and password. Once they log in, they will be able to search for books, leave reviews for individual books, and see the reviews made by other people. You’ll also use the a third-party API by Goodreads, another book review website, to pull in ratings from a broader audience. Finally, users will be able to query for book details and book reviews programmatically via your website’s API.
 
-
+#### :arrow_right: Getting Started:
+:small_orange_diamond:PostgreSQL 
+For this project, you’ll need to set up a PostgreSQL database to use with our application. It’s possible to set up PostgreSQL locally on your own computer, but for this project, we’ll use a database hosted by [Heroku](https://www.heroku.com/), an online web hosting service.
