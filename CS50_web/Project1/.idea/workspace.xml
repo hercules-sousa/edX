@@ -34,7 +34,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1b5ofYfGSMMUtxerTybtUgCWcvU" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -50,7 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager" selected="Python.test">
     <configuration name="application" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -156,9 +156,9 @@
       <screen x="0" y="25" width="1366" height="743" />
     </state>
     <state width="1343" height="185" key="GridCell.Tab.0.right/0.25.1366.743@0.25.1366.743" timestamp="1588103101097" />
-    <state x="172" y="31" key="SettingsEditor" timestamp="1587989192525">
+    <state x="172" y="31" key="SettingsEditor" timestamp="1588350066205">
       <screen x="0" y="25" width="1366" height="743" />
     </state>
-    <state x="172" y="31" key="SettingsEditor/0.25.1366.743@0.25.1366.743" timestamp="1587989192525" />
+    <state x="172" y="31" key="SettingsEditor/0.25.1366.743@0.25.1366.743" timestamp="1588350066205" />
   </component>
 </project>

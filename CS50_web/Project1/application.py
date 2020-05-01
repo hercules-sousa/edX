@@ -38,7 +38,6 @@ def trying_logging():
         return render_template("login.html", message=True, text="Login page")
 
     session["username"] = user_page
-    session["review"] = True
     return render_template("search.html", user=session["username"])
 
 
@@ -53,7 +52,7 @@ def signing_up_into_db():
     password_page = request.form.get("password")
 
     if user_page == "" or password_page == "":
-        return render_template("signing_up.html", login_fail=True)
+        return render_template("signing_up.html", text="Signing up page", login_fail=True)
 
     account_db = db.execute("SELECT * FROM accounts WHERE username=:username",
                             {"username": user_page}).fetchone()
@@ -61,8 +60,8 @@ def signing_up_into_db():
         db.execute("INSERT INTO accounts (username, password) VALUES (:user, :pass);",
                    {"user": user_page, "pass": password_page})
         db.commit()
-        return render_template("signing_up.html", login_success=True)
-    return render_template("signing_up.html", login_fail=True)
+        return render_template("signing_up.html", text="Signing up page", login_success=True)
+    return render_template("signing_up.html", text="Signing up page", login_fail=True)
 
 
 def looking_into_db(s):
@@ -121,3 +120,8 @@ def sending_review():
     else:
         return render_template("error.html", message="Usuário já comentou")
 
+
+@app.route("/logging_out", methods=["GET"])
+def logging_out():
+    session["username"] = None
+    return render_template("login.html", text="Login Page")
