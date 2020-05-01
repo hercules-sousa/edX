@@ -83,8 +83,8 @@ def looking_into_db_by_id(id):
 def searching():
     s = request.form.get("searched")
     book = looking_into_db(s)
-    if not book:
-        return "No such book", 404
+    if not book or s == "":
+        return render_template("error.html", message="Book not found")
     return render_template("results.html", searched=book, part_searched=s)
 
 
@@ -104,7 +104,7 @@ def sending_review():
     review_rating = request.form.get("review_rating")
     if not review_rating.isdigit():
         print(f"Review sent = {review_rating}")
-        return render_template("error.html")
+        return render_template("error.html", message="Invalid Number")
     review_rating = int(review_rating)
     if not 1 <= review_rating <= 5:
         print(f"Review sent = {review_rating}")
@@ -116,9 +116,9 @@ def sending_review():
     if user_in_db is None:
         db.execute("INSERT INTO reviews(username, commentary) VALUES (:username, :review_comment);", {"username": user, "review_comment": review_comment})
         db.commit()
-        return render_template("error.html", message="Tudo certo")
+        return render_template("error.html", message="Commentary made successfully!")
     else:
-        return render_template("error.html", message="Usuário já comentou")
+        return render_template("error.html", message="User already made a  commentary")
 
 
 @app.route("/logging_out", methods=["GET"])

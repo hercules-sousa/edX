@@ -7,9 +7,10 @@
     <meta name="viewport" content="width = device-width, initial-scale = 1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles0.css') }}">
     <title>Results</title>
   </head>
-  <body>
+  <body style="background-image: url({{ url_for('static', filename='img/library.jpg') }})">
 
     <div class="container">
       <br>
@@ -22,13 +23,21 @@
 
     <div class="container">
       {% for result in searched %}
-        <ul>
-          <li><a href="{{ url_for('book_search', id=result[4]) }}">{{ result[1] }}</a></li>
+        <div class="list-group">
+          <a href="{{ url_for('book_search', id=result[4]) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+              <h2 class="mb-1">{{ result[1] }}</h5>
+              <small>Book</small>
+            </div>
+              <p class="mb-1">Written by: {{ result[2]}}</p>
+            <small>Publication year: {{ result[3] }}</small>
+          </a>
           <br>
-        </ul>
+          <br>
+          <br>
+        </div>
       {% else %}
       {% endfor %}
     </div>
-
   </body>
 </html>

@@ -17,28 +17,58 @@
 {% endblock %}
 
 {% block body %}
-  Author: {{ data_in_db[0][2] }}
-  <br>
-  Publication year: {{ data_in_db[0][3] }}
-  <br>
-  ISBN: {{ data_in_db[0][0] }}
-  <br>
-  Ratings count: {{ request["books"][0]["ratings_count"] }}
-  <br>
-  Reviews count: {{ request["books"][0]["reviews_count"] }}
-  <br>
-  Text reviews count: {{ request["books"][0]["text_reviews_count"] }}
-  <br>
-  Work ratings count: {{ request["books"][0]["work_ratings_count"] }}
-  <br>
-  Work reviews count: {{ request["books"][0]["work_reviews_count"] }}
-  <br>
-  Work text reviews count: {{ request["books"][0]["work_text_reviews_count"] }}
-  <br>
-  Average rating: {{ request["books"][0]["average_rating"] }}
-  <br>
-  <br>
-  <br>
+
+      <div style="color: white;">
+
+        <table class="table table-striped table-dark">
+      <tbody>
+        <tr>
+          <th scope="row">Author</th>
+          <td>{{ data_in_db[0][2] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Publication year</th>
+          <td>{{ data_in_db[0][3] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">ISBN</th>
+          <td>{{ data_in_db[0][0] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Ratings count</th>
+          <td>{{ request["books"][0]["ratings_count"] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Reviews count</th>
+          <td>{{ request["books"][0]["reviews_count"] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Text reviews count</th>
+          <td>{{ request["books"][0]["text_reviews_count"] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Work ratings count</th>
+          <td>{{ request["books"][0]["work_ratings_count"] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Work reviews count</th>
+          <td>{{ request["books"][0]["work_reviews_count"] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Work text reviews count</th>
+          <td>{{ request["books"][0]["work_text_reviews_count"] }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Average rating</th>
+          <td>{{ request["books"][0]["average_rating"] }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+    <br>
+  </div>
+
 {% endblock %}
 
 {% block form %}
@@ -48,12 +78,14 @@
         <input type="text" class="form-control" name="review_rating" placeholder="Enter here your rating:">
       </div>
       <div>
-        <label for="review">Comment:</label>
+        <p style="color: white;">Comment:</p>
         <textarea rows="4" cols="50" name="review_comment"></textarea>
       </div>
       <br>
       <button class="btn btn-primary" type="submit">Submit</button>
   </form>
+  <br>
+  <br>
 {% endblock %}
 
 {% block number_valid %}
