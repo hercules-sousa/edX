@@ -93,9 +93,10 @@ def book_search(id):
     book = looking_into_db_by_id(id)
     isbn = book[0][0]
     print(f"ISBN = {isbn}")
-    res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"KEY": "KEj26vrr38gcJPa6sF4vouwY", "isbns": isbn})
+    res = requests.get("https://www.goodreads.com/book/review_counts.json",
+                       params={"KEY": "KEj26vrr38gcJPa6sF4vouwY", "isbns": isbn})
     if res.status_code != 200:
-        raise Exception("Error: No such book")
+        return Exception("Error: No such book"), 404
     return render_template("books.html", data_in_db=book, request=res.json())
 
 
@@ -114,7 +115,8 @@ def sending_review():
     user = session["username"]
     user_in_db = db.execute("SELECT * FROM reviews WHERE username=:user;", {"user": user}).fetchone()
     if user_in_db is None:
-        db.execute("INSERT INTO reviews(username, commentary) VALUES (:username, :review_comment);", {"username": user, "review_comment": review_comment})
+        db.execute("INSERT INTO reviews(username, commentary) VALUES (:username, :review_comment);",
+                   {"username": user, "review_comment": review_comment})
         db.commit()
         return render_template("error.html", message="Commentary made successfully!")
     else:
@@ -125,3 +127,22 @@ def sending_review():
 def logging_out():
     session["username"] = None
     return render_template("login.html", text="Login Page")
+
+
+@app.route("/api/<isbn>")
+def books_api(isbn):
+    result_from_db = db.execute("SELECT * FROM books WHERE isbn=:isbn", {"isbn": isbn}).fetchall()
+    if not result_from_db:
+        return Exception("No such book"), 404
+    result_from_request = requests.get("https://www.goodreads.com/book/review_counts.json",
+                                       params={"KEY": "KEj26vrr38gcJPa6sF4vouwY", "isbns": isbn})
+    if result_from_request.status_code != 200:
+        return Exception("Error: No such book"), 404
+    result_from_request = result_from_request.json()
+    print(result_from_request)
+    return jsonify({"title": result_from_db[0][1],
+                    "author": result_from_db[0][2],
+                    "year": result_from_db[0][3],
+                    "isbn": result_from_db[0][0],
+                    "review_count": result_from_request["books"][0]["work_ratings_count"],
+                    "average_score": result_from_request["books"][0]["average_rating"]})
