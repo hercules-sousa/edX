@@ -1,0 +1,25 @@
+<html>
+    <head>
+
+        <script>
+
+            if(!localStorage.getItem("count")){
+                localStorage.setItem("count", 0)
+            }
+            document.addEventListener("DOMContentLoaded", () =>{
+                document.querySelector("#counter").innerHTML = localStorage.getItem("count")
+
+                document.querySelector("#btn").onclick = function(){
+                    localStorage.setItem("count", Number(localStorage.getItem("count")) + 1)
+                }
+            })
+
+        </script>
+
+    </head>
+
+    <body>
+        <h1 id="counter"></h1>
+        <button id="btn">Click here</button>
+    </body>
+</html>
