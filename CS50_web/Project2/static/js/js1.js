@@ -1,9 +1,5 @@
-document.addEventListener("DOMContentLoaded", function(){ 
+document.addEventListener("DOMContentLoaded", function(){
     //localStorage.setItem("user", "")
-    
-    if(!localStorage.getItem("user")){
-        document.querySelector("#div_form").style.visibility = "visible"
-    }
 
     document.querySelector("#btn-submit").onclick = function(){ set_user() }
 
@@ -14,7 +10,10 @@ document.addEventListener("DOMContentLoaded", function(){
         }
         else{
             localStorage.setItem("user", name)
-            document.querySelector(".box").style.animationPlayState = 'running'
+            document.querySelector('.box').style.animationPlayState = 'running'
+            document.querySelector('.box').addEventListener('animationend', () => {
+                document.querySelector('.box').remove()
+            })
         }
     }
 })

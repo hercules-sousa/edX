@@ -5,7 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE-edge">
         <meta http-equiv="X-UA-Compatible" content="chrome=1">
         <title>Chat app</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style0.css') }}">
+
 
         <script src="{{ url_for('static', filename='js/js1.js') }}"></script>
 
@@ -14,16 +17,18 @@
         <div id="div_form" class="box" action="#">
             <h1>Login</h1>
             <hr>
-            <h4>You need to enter a username to use the chat</h4>
+            <h6>You need to enter a username to use the chat</h6>
             <form id="form">
                 <input id="user_input" type="text" autocomplete="off" placeholder="Enter your username:">
-                <input id="btn-submit" type="submit" value="Submit">
+                <input id="btn-submit" type="button" value="Submit">
             </form>
         </div>
     </body>
 
     <script>
-        document.querySelector("#div_form").style.visibility = "hidden"
+        if(localStorage.getItem("user") !== ''){
+            document.querySelector('.box').remove()
+        }
     </script>
 
 </html>

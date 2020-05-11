@@ -9,7 +9,7 @@ body{
 @keyframes hide{
     from{
         opacity: 1;
-    }    
+    }
     to{
         opacity: 0;
     }
@@ -25,18 +25,20 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+
     animation-name: hide;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-play-state: paused;
 }
 
-.box h1, .box h4{
+.box h1, .box h6{
     color:white;
     font-weight: 500;
 }
 
 .box input[type = "text"]{
+    font-size: smaller;
     border: 0;
     background: none;
     display: block;
@@ -57,7 +59,7 @@ body{
     font-size: 15px;
 }
 
-.box input[type = "submit"]{
+.box input[type = "button"]{
     border: 0;
     background: none;
     display: block;
@@ -72,7 +74,7 @@ body{
     cursor: pointer;
 }
 
-.box input[type = "submit"]:hover{
+.box input[type = "button"]:hover{
     background: #2ecc71;
     color: black;
     font-size: large;
