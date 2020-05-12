@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(){
-    //localStorage.setItem("user", "")
 
     document.querySelector("#btn-submit").onclick = function(){ set_user() }
 
@@ -13,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
             document.querySelector('.box').style.animationPlayState = 'running'
             document.querySelector('.box').addEventListener('animationend', () => {
                 document.querySelector('.box').remove()
+                window.location.assign("/chat")
             })
         }
     }
