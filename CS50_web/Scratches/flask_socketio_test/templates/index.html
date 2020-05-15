@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Test</title>
+    </head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <style>
+        #test{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        #list{
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+
+    <body>
+        <div>
+            <ul id="list">
+                <li>Test</li>
+            </ul>
+        </div>
+        <div id="test" class="container">
+            <form id="form1">
+                <input id="input1" type="text" autocomplete="off">
+                <button id="btn1">Submit</button>
+            </form>
+        </div>
+    </body>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io();
+        socket.on('connect', function() {
+            socket.emit("my event test", {data: "Connection established"})
+        });
+
+        document.querySelector("#btn1").onclick = function(){
+            text = document.querySelector("#input1").value
+            socket.emit('event2', {data: text})
+            document.querySelector("#input1").value = ''
+            return false
+        }
+
+        socket.on("returningMessage", function(mens){
+            let v = document.createElement("li")
+            v.innerHTML = mens["mens"]
+            document.querySelector("#list").append(v)
+            return false
+        })
+    
+    </script>
+
+</html>
