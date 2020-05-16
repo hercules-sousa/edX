@@ -1,28 +1,37 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charsert="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta http-equiv="X-UA-Compatible" content="chrome=1">
+        <title>Chat app</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style0.css') }}">
 
-{% block script1 %}
-    <script src="{{ url_for('static', filename='js/js1.js') }}"></script>
-{% endblock %}
+        <script src="{{ url_for('static', filename='js/js1.js') }}"></script>
 
+    </head>
+    
+    <body>
+        <div id="div_form" class="box" action="#">
+            <h1>Login</h1>
+            <hr>
+            <h6>You need to enter a username to use the chat</h6>
+            <form id="form">
+                <input id="user_input" type="text" autocomplete="off" placeholder="Enter your username:">
+                <input id="btn-submit" type="button" value="Submit">
+            </form>
+        </div>
 
-{% block form %}
-    <div id="div_form" class="box" action="#">
-        <h1>Login</h1>
-        <hr>
-        <h6>You need to enter a username to use the chat</h6>
-        <form id="form">
-            <input id="user_input" type="text" autocomplete="off" placeholder="Enter your username:">
-            <input id="btn-submit" type="button" value="Submit">
-        </form>
-    </div>
-{% endblock %}
+    </body>
 
-{% block form_script %}
     <script>
-        localStorage.setItem("user", "")
+        localStorage.setItem('user', '')
         if(localStorage.getItem("user") !== ''){
             document.querySelector('.box').remove()
             window.location.assign("/chat")
         }
     </script>
-{% endblock %}
+
+</html>
