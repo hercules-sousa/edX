@@ -11,8 +11,7 @@ document.addEventListener("DOMContentLoaded", function(){
             localStorage.setItem("user", name)
             document.querySelector('.box').style.animationPlayState = 'running'
             document.querySelector('.box').addEventListener('animationend', () => {
-                document.querySelector('.box').remove()
-                window.location.assign("/chat")
+                window.location.assign("/channels")
             })
         }
     }
