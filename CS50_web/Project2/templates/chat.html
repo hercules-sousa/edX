@@ -31,6 +31,10 @@
             padding-top: 20px;
         }
 
+        li{
+            color: #2ecc71
+        }
+
     </style>
 
     <script>
@@ -42,7 +46,6 @@
             function createMessage(text){
                 let listItem = document.createElement('li')
                 listItem.innerHTML = text
-                listItem.style.color = '#2ecc71'
                 document.querySelector('#messageList').appendChild(listItem)
                 var messageBody = document.querySelector('#messageList');
                 messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
@@ -69,6 +72,10 @@
                 return false
             }
 
+            document.querySelector('#btn-test').onclick = function() {
+                window.location.assign('/chat')
+            }
+
         })
     </script>
 
@@ -76,12 +83,20 @@
 
         <div class="container">
             <div id="divScroll">
-                <ul id='messageList'></ul>
+                <ul id='messageList'>
+                    {% for message in m %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
             </div>
             <form id="form1">
                 <input id="form" type="text" autocomplete="off">
                 <button id="btn1">Submit</button>
             </form>
+        </div>
+
+        <div>
+            <button id='btn-test'>test</button>
         </div>
         
     </body>

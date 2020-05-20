@@ -8,10 +8,10 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
 channel = str()
+begin, end = int(), int()
 
 with open('messages.json', 'r') as m:
     messages = json.load(m)
-    print(messages)
 
 
 def writingMessage(message):
@@ -30,13 +30,21 @@ def channels():
     return render_template('channels.html')
 
 
-@app.route("/chat/<ch>")
+@app.route("/chat/<ch>", methods=['GET', 'POST'])
 def choosenChannel(ch):
     global channel
     channel = ch
     print(f'\033[1;32;40mThe channel sent was: {ch}')
     print(f'\033[1;32;40mThe channel being used is: {channel}')
-    return render_template("chat.html")
+    global end
+    if len(messages[channel]) < 20:
+        mes = messages[channel][::-1]
+        return render_template("chat.html", m=mes)
+    else:
+        end = 20
+        mes = messages[channel][begin: end]
+        mes = mes[::-1]
+        return render_template("chat.html", m=mes)
 
 
 @socketio.on('confirmingConnection')
