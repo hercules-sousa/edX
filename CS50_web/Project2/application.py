@@ -1,6 +1,6 @@
 import os, json
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit, send
 
 app = Flask(__name__)
@@ -8,14 +8,14 @@ app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
 channel = str()
-begin, end = int(), int()
+start, end, quantity = 0, 0, 20
 
 with open('messages.json', 'r') as m:
     messages = json.load(m)
 
 
 def writingMessage(message):
-    messages[channel].append(message)
+    messages[channel].insert(0, message)
     with open('messages.json', 'w') as m:
         json.dump(messages, m, indent=2)
 
@@ -30,7 +30,7 @@ def channels():
     return render_template('channels.html')
 
 
-@app.route("/chat/<ch>", methods=['GET', 'POST'])
+@app.route("/chat/<ch>", methods=['GET'])
 def choosenChannel(ch):
     global channel
     channel = ch
@@ -41,10 +41,25 @@ def choosenChannel(ch):
         mes = messages[channel][::-1]
         return render_template("chat.html", m=mes)
     else:
-        end = 20
-        mes = messages[channel][begin: end]
+        end = 21
+        mes = messages[channel][start: end]
         mes = mes[::-1]
         return render_template("chat.html", m=mes)
+
+
+@app.route('/testtest', methods=['GET'])
+def moreMessages():
+    messagesReturn = []
+    if len(messages[channel]) > 20:
+        global start
+        c = 0
+        while start < len(messages[channel]) and c < 20:
+            messagesReturn.append(messages[channel][start])
+            start += 1
+            c += 1
+
+    print(json.dumps(messagesReturn, indent=3))
+    return jsonify(messagesReturn)
 
 
 @socketio.on('confirmingConnection')

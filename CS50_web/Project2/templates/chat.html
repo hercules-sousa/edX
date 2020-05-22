@@ -73,9 +73,13 @@
             }
 
             document.querySelector('#btn-test').onclick = function() {
-                window.location.assign('/chat')
+                const request = new XMLHttpRequest()
+                request.open('GET', '/testtest')
+                request.onload = function(){
+                    
+                }
+                request.send()
             }
-
         })
     </script>
 
