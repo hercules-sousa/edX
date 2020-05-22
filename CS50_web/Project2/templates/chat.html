@@ -40,6 +40,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
 
+            load()
+
             var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
             var user = localStorage.getItem('user')
 
@@ -72,13 +74,31 @@
                 return false
             }
 
+            function load(){
+                const request = new XMLHttpRequest()
+                request.open('GET', '/testtest')
+                request.onload = function(){
+                    const data = JSON.parse(request.responseText)
+                    data.forEach(add_message)
+                }
+                request.send()
+            }
+
             document.querySelector('#btn-test').onclick = function() {
                 const request = new XMLHttpRequest()
                 request.open('GET', '/testtest')
                 request.onload = function(){
-                    
+                    const data = JSON.parse(request.responseText)
+                    data.forEach(add_message)
                 }
                 request.send()
+            }
+
+            function add_message(contents){
+                const m = document.createElement('li')
+                m.innerHTML = contents
+                let l = document.querySelector('#messageList')
+                l.insertBefore(m, l.childNodes[0])
             }
         })
     </script>
@@ -88,9 +108,6 @@
         <div class="container">
             <div id="divScroll">
                 <ul id='messageList'>
-                    {% for message in m %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
                 </ul>
             </div>
             <form id="form1">

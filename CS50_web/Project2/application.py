@@ -36,15 +36,7 @@ def choosenChannel(ch):
     channel = ch
     print(f'\033[1;32;40mThe channel sent was: {ch}')
     print(f'\033[1;32;40mThe channel being used is: {channel}')
-    global end
-    if len(messages[channel]) < 20:
-        mes = messages[channel][::-1]
-        return render_template("chat.html", m=mes)
-    else:
-        end = 21
-        mes = messages[channel][start: end]
-        mes = mes[::-1]
-        return render_template("chat.html", m=mes)
+    return render_template("chat.html")
 
 
 @app.route('/testtest', methods=['GET'])
@@ -57,7 +49,7 @@ def moreMessages():
             messagesReturn.append(messages[channel][start])
             start += 1
             c += 1
-
+            
     print(json.dumps(messagesReturn, indent=3))
     return jsonify(messagesReturn)
 
