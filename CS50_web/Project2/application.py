@@ -1,4 +1,4 @@
-import os, json
+import os, json, time
 
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit, send
@@ -20,6 +20,11 @@ def writingMessage(message):
         json.dump(messages, m, indent=2)
 
 
+def writingChannel():
+    messages[channel] = []
+    with open('messages.json', 'w') as m:
+        json.dump(messages, m, indent=2)
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -34,6 +39,8 @@ def channels():
 def choosenChannel(ch):
     global channel
     channel = ch
+    if channel not in messages.keys():
+        writingChannel()
     print(f'\033[1;32;40mThe channel sent was: {ch}')
     print(f'\033[1;32;40mThe channel being used is: {channel}')
     return render_template("chat.html")
@@ -49,7 +56,7 @@ def moreMessages():
             messagesReturn.append(messages[channel][start])
             start += 1
             c += 1
-            
+
     print(json.dumps(messagesReturn, indent=3))
     return jsonify(messagesReturn)
 

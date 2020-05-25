@@ -2,8 +2,45 @@
     <head>
         <title>Channels</title>
     </head>
+
+    <style>
+        #links{
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            overflow: auto;
+        }
+
+        form{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        function createLinks(){
+            new_channel = document.querySelector('input[type = "text"]').value
+            link_channel = document.createElement('a')
+            link_channel.href = 'chat/' + new_channel
+            link_channel.innerHTML = new_channel
+            document.querySelector('#links').appendChild(link_channel)
+            document.querySelector('input[type = "text"]').value = ''
+            
+        }
+    </script>
+
     <body>
-        <a href="/chat/public">Public</a>
-        <a href="/chat">Test</a>
+        <div id='links'>
+            <a href="/chat/public">Public</a>
+        </div>
+        <form action="#">
+            <input type='text' autocomplete='off' placeholder='Enter the name of a new channel:'>
+        </form>
+        <button onclick='createLinks()'>Create channel</button>
     </body>
 </html>

@@ -8,6 +8,29 @@
 
     <style>
 
+        body{
+            background-color: black;
+        }
+
+        #btn1{
+            border: 0;
+            background: none;
+            text-align: center;
+            margin: 20px auto;
+            border: 2px solid #2ecc71;
+            padding: 7px 40px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.40s;
+            cursor: pointer;
+        }
+
+        #btn1:hover{
+            background: #2ecc71;
+            color: black;
+        }
+
         #form1, #messageList{
             position: absolute;
             left: 50%;
@@ -17,6 +40,7 @@
 
         #form1{
             top: 85%;
+            width: 800px;
         }
 
         #messageList{
@@ -28,11 +52,29 @@
             width: 70%;
             height: 12cm;
             overflow: scroll;
+            overflow-x: hidden;
             padding-top: 20px;
         }
 
         li{
             color: #2ecc71
+        }
+
+        #form{
+            font-size: smaller;
+            border: 0;
+            background: none;
+            text-align: center;
+            border: 2px solid #3498db;
+            padding: 14px;
+            outline: none;
+            color: white;
+            border-radius: 24px;
+            transition: 0.25s;
+        }
+
+        #form:focus{
+            border-color: #2ecc71;
         }
 
     </style>
@@ -41,6 +83,12 @@
         document.addEventListener("DOMContentLoaded", () => {
 
             load()
+            setHeight()
+
+            function setHeight(){
+                let messageBody = document.querySelector('#messageList')
+                messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight
+            }
 
             var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
             var user = localStorage.getItem('user')
@@ -49,8 +97,8 @@
                 let listItem = document.createElement('li')
                 listItem.innerHTML = text
                 document.querySelector('#messageList').appendChild(listItem)
-                var messageBody = document.querySelector('#messageList');
-                messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+                let messageBody = document.querySelector('#messageList')
+                messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight
             }
 
             socket.on('connect', () => {
@@ -84,15 +132,7 @@
                 request.send()
             }
 
-            document.querySelector('#btn-test').onclick = function() {
-                const request = new XMLHttpRequest()
-                request.open('GET', '/testtest')
-                request.onload = function(){
-                    const data = JSON.parse(request.responseText)
-                    data.forEach(add_message)
-                }
-                request.send()
-            }
+            
 
             function add_message(contents){
                 const m = document.createElement('li')
@@ -100,25 +140,29 @@
                 let l = document.querySelector('#messageList')
                 l.insertBefore(m, l.childNodes[0])
             }
+
+            document.querySelector('#messageList').onscroll = function(){
+                let messageBody = document.querySelector('#messageList')
+                if (messageBody.scrollTop === 0){
+                    load()
+                }
+            }
         })
     </script>
 
     <body>
 
-        <div class="container">
-            <div id="divScroll">
-                <ul id='messageList'>
-                </ul>
-            </div>
-            <form id="form1">
-                <input id="form" type="text" autocomplete="off">
-                <button id="btn1">Submit</button>
-            </form>
+        
+        <div id="divScroll">
+            <ul id='messageList'>
+            </ul>
         </div>
+        <form id="form1">
+            <input id="form" size="50%" type="text" autocomplete="off">
+            <button id="btn1">Submit</button>
+        </form>
+        
 
-        <div>
-            <button id='btn-test'>test</button>
-        </div>
         
     </body>
 </html>
